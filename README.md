@@ -1,4 +1,4 @@
-FAIR-UMN
+FAIR-UMN-HGCAL (FAIR-UMN)
 ==============================
 
 Repository for analyzing HGCAL prototype data uploaded on Zenodo.
