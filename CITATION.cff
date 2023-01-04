@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: UMN
+    orcid: https://orcid.org/Your ORCID
+title: FAIR-UMN
+version: 0.1.0
+doi: 10.XXXX/XXXX
+date-released: 2023-08-01/04/23
