@@ -1,0 +1,31 @@
+{
+    "conceptrecid": "7504163",
+    "created": "2023-01-04T17:08:18.202044+00:00",
+    "files": [],
+    "id": 7504164,
+    "links": {
+        "bucket": "https://zenodo.org/api/files/c08fed0d-1c04-4f74-80cb-87dd3e220cd0",
+        "discard": "https://zenodo.org/api/deposit/depositions/7504164/actions/discard",
+        "edit": "https://zenodo.org/api/deposit/depositions/7504164/actions/edit",
+        "files": "https://zenodo.org/api/deposit/depositions/7504164/files",
+        "html": "https://zenodo.org/deposit/7504164",
+        "latest_draft": "https://zenodo.org/api/deposit/depositions/7504164",
+        "latest_draft_html": "https://zenodo.org/deposit/7504164",
+        "newversion": "https://zenodo.org/api/deposit/depositions/7504164/actions/newversion",
+        "publish": "https://zenodo.org/api/deposit/depositions/7504164/actions/publish",
+        "registerconceptdoi": "https://zenodo.org/api/deposit/depositions/7504164/actions/registerconceptdoi",
+        "self": "https://zenodo.org/api/deposit/depositions/7504164"
+    },
+    "metadata": {
+        "prereserve_doi": {
+            "doi": "10.5281/zenodo.7504164",
+            "recid": 7504164
+        }
+    },
+    "modified": "2023-01-04T17:08:18.202054+00:00",
+    "owner": 328396,
+    "record_id": 7504164,
+    "state": "unsubmitted",
+    "submitted": false,
+    "title": ""
+}

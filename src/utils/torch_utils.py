@@ -4,8 +4,8 @@ import torch
 
 def train(model, x, y, optimizer, criterion):
     model.zero_grad()
-    output = model(x)
-    loss = criterion(output,y)
+    output = model(x).reshape(-1,)
+    loss = criterion(output.float(),y.float())
     loss.backward()
     optimizer.step()
 

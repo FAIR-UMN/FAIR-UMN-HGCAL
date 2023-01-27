@@ -28,6 +28,7 @@ class NN(nn.Module):
             seq_.append(nn.ReLU())
         seq_.append(nn.Softplus())
         self.network = nn.Sequential(*seq_)
+        self.float()
     
     def forward(self, data):
-        return self.network(data)
+        return self.network(data).reshape(-1,)

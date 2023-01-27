@@ -42,7 +42,8 @@ class DNNDataset(Dataset):
     def __init__(self, filepath):
         if not os.path.exists(filepath):
             print('FIle does not exist!')
-
+        
+        self.nevents = 0
         self.input_size = 28
         self.dataset_size = 0
         self.data = None
@@ -66,7 +67,7 @@ class DNNDataset(Dataset):
         self.input_size = input_
     
     def __len__(self):
-        return len(self.h5_file)
+        return self.nevents
     
     def __getitem__(self, index=1):
         return self.data[index], self.targets[index]
@@ -99,6 +100,7 @@ class H5DatasetDNN(DNNDataset):
         
         nhits = np.asarray(self.h5_file['nhits'], dtype=int)
         self.targets = np.asfarray(self.h5_file['target'])
+        self.nevents = len(nhits)
 
         zarray = np.asarray(self.h5_file['rechit_z'])
         layers = np.unique(zarray)[:self.input_size]
@@ -135,8 +137,10 @@ class PklDatasetDNN(DNNDataset):
             print('Files do not exist!')
           
     def prepare(self):
+        
         nhits = np.asarray(self.arrays['nhits'], dtype=int)
         self.targets = np.asfarray(self.arrays['target'])
+        self.nevents = len(nhits)
 
         zarray = np.asarray(self.arrays['rechit_z'])
         layers = np.unique(zarray)[:self.input_size]
