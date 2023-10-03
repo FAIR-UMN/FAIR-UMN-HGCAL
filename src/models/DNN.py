@@ -14,7 +14,7 @@ class NN(nn.Module):
         print("Input layer size: ", layer_array[0])
         print("Number of hidden layers : ", len(layer_array))
         for i in range(len(layer_array[1:-1])):
-           print("Hidden layer {} size: {}".format(1+i, layer_array[1+i]))
+            print("Hidden layer {} size: {}".format(1+i, layer_array[1+i]))
         print("Output layer size: ", layer_array[-1])
         print("-------------------------------")
         

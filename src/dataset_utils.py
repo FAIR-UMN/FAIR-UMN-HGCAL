@@ -1,6 +1,7 @@
 # Data Loader for DNN
 import os
 import h5py
+import pickle
 import numpy as np
 import awkward as ak
 
@@ -121,34 +122,34 @@ class PklDatasetDNN(DNNDataset):
     
     def __init__(self, pickle_path):
 
-        self.pickle_list = ['nhits', 'rechit_z', 'rechit_energy', 'target']
+        self.pickle_list = ['rechit_z', 'rechit_energy', 'target']
         self.arrays = {}
         self.input_size = 28
         self.dataset_size = 0
         self.data = None
         self.targets = None
-        self.prepare()
 
         if os.path.exists(pickle_path):
             for pkl in self.pickle_list:
-                with open('%s/%s.pickle' % (pickle_path, pkl)) as fpkl_:
+                with open('%s/%s.pickle' % (pickle_path, pkl),'rb') as fpkl_:
                     self.arrays[pkl] = pickle.load(fpkl_)
         else:
             print('Files do not exist!')
+        
+        self.prepare()
           
     def prepare(self):
         
-        nhits = np.asarray(self.arrays['nhits'], dtype=int)
-        self.targets = np.asfarray(self.arrays['target'])
-        self.nevents = len(nhits)
+        self.targets = np.asarray(self.arrays['target'])
+        self.nevents = len(self.targets)
 
-        zarray = np.asarray(self.arrays['rechit_z'])
-        layers = np.unique(zarray)[:self.input_size]
+        zarray = self.arrays['rechit_z']
+        energy = self.arrays['rechit_energy']
+        layers = np.unique(np.asarray(ak.flatten(zarray)))[:self.input_size]
 
         self.normalize(zarray, var='zarray')
         self.normalize(energy, var='energy')
 
         # sum energies of all rechits in a layer
-        self.data = np.array([ ak.sum(energy[zarray==l], axis=-1) for l in layers ], dtype=np.float).T
+        self.data = np.array([ ak.sum(energy[zarray==l], axis=-1) for l in layers ], dtype=np.float32).T
         self.data = self.data/NHITS_Max
-        
